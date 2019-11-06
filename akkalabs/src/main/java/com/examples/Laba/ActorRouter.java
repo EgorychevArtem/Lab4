@@ -1,4 +1,4 @@
 package com.examples.Laba;
 
-public class ActorRouteer {
+public class ActorRouter {
 }
