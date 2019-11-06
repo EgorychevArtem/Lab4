@@ -44,7 +44,7 @@ public class App {
                 path("result", () ->
                             route(
                                     get( () ->{
-                                        
+
                                             }
 
                                     )
