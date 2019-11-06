@@ -14,6 +14,8 @@ import akka.stream.javadsl.Flow;
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
 
+import static akka.http.javadsl.server.Directives.route;
+
 public class App {
     public static void main(String[] args) throws IOException {
         ActorSystem system = ActorSystem.create("routers");
@@ -37,6 +39,10 @@ public class App {
     }
 
     private Route createRoute(ActorSystem system) {
+        route(
+                path(""
 
+                )
+        )
     }
 }
