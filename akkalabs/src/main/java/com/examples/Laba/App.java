@@ -42,6 +42,13 @@ public class App {
     private Route createRoute(ActorSystem system) {
         route(
                 path("result", () ->
+                        {
+                            return route(
+                                    get(() ->
+
+                                    )
+                            )
+                        }
 
                 )
         )
