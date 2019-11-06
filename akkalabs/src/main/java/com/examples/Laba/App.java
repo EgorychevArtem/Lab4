@@ -14,6 +14,7 @@ import akka.stream.javadsl.Flow;
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
 
+import static akka.http.javadsl.server.Directives.path;
 import static akka.http.javadsl.server.Directives.route;
 
 public class App {
@@ -40,7 +41,7 @@ public class App {
 
     private Route createRoute(ActorSystem system) {
         route(
-                path(""
+                path("result", () ->
 
                 )
         )
