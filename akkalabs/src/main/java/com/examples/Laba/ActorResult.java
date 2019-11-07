@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ActorResult extends AbstractActor {
-    Map<String, ArrayList<Test>> storage = new HashMap<String, ArrayList<Test>>()
+    Map<String, ArrayList<Test>> storage = new HashMap<String, ArrayList<Test>>();
     public AbstractActor.Receive createReceive(){
         return receiveBuilder()
                 .match(InputResMessage.class, m -> {
