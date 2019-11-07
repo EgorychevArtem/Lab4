@@ -13,9 +13,14 @@ public class ActorResult extends AbstractActor {
                 .match(InputResMessage.class, m -> {
                     storage.get(m.pkg).add(m.test);
                 })
-                .match(String.class, m ->
-                        ArrayList<Test> list = storage.getOrDefault(m, new ArrayList<Test>());
-
-                )
+                .match(String.class, m -> {
+                    ArrayList<Test> list = storage.getOrDefault(m, new ArrayList<Test>());
+                    Test[] arr = new Test[list.size()];
+                    
+                    sender().tell(
+                            new Result(list.toArray(arr)),
+                            getSelf()
+                    );
+                })
     }
 }
