@@ -1,8 +1,8 @@
 package com.examples.Laba;
 
 public class InputResMessage {
-    String pkg;
-    Test test;
+    public String pkg;
+    public Test test;
     InputResMessage(String pkg, Test test){
         this.pkg = pkg;
         this.test = test;
