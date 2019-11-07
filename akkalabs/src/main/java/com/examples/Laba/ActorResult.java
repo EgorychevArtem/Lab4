@@ -1,5 +1,14 @@
 package com.examples.Laba;
 
-public class ActorResult {
+import akka.actor.AbstractActor;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+public class ActorResult {
+    Map<String, ArrayList<Test>> storage = new HashMap<String, ArrayList<Test>>()
+    public AbstractActor.Receive createReceive(){
+        
+    }
 }
