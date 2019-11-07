@@ -11,7 +11,7 @@ public class ActorResult {
     public AbstractActor.Receive createReceive(){
         return receiveBuilder()
                 .match(InputResMessage.class, m -> {
-                    if ()
+                    storage.
                 })
     }
 }
