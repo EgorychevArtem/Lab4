@@ -21,6 +21,6 @@ public class ActorResult extends AbstractActor {
                             new Result(arr),
                             getSelf()
                     );
-                })
+                }).build();
     }
 }
