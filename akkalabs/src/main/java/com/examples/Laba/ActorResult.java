@@ -9,6 +9,9 @@ import java.util.Map;
 public class ActorResult {
     Map<String, ArrayList<Test>> storage = new HashMap<String, ArrayList<Test>>()
     public AbstractActor.Receive createReceive(){
-        
+        return receiveBuilder()
+                .match(InputResMessage.class, m -> {
+                    if ()
+                })
     }
 }
