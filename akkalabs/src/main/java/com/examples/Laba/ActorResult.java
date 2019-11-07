@@ -13,6 +13,9 @@ public class ActorResult extends AbstractActor {
                 .match(InputResMessage.class, m -> {
                     storage.get(m.pkg).add(m.test);
                 })
-                .match()
+                .match(String.class, m ->
+                        ArrayList<Test> list = storage.getOrDefault(m, new ArrayList<Test>());
+
+                )
     }
 }
