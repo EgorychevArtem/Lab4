@@ -48,7 +48,7 @@ public class App extends AllDirectives {
     }
 
     Route createRoute(ActorSystem system, ActorRef router) {
-        route(
+        return route(
                 path("result", () -> {
                     return route(
                             get(() -> {
