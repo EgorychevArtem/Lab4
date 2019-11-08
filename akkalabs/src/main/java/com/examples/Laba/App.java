@@ -47,14 +47,14 @@ public class App extends AllDirectives {
                 .thenAccept(unbound -> system.terminate());
     }
 
-    Route createRoute(ActorSystem system) {
+    Route createRoute(ActorSystem system, ActorRef router) {
         route(
                 path("result", () -> {
                     return route(
                             get(() -> {
                                 return parameter("packageId", pkg -> {
                                     Future<Result> res = Patterns.ask(
-                                            router, new OutputRes(pkg)
+                                            router, new OutputRes(pkg),
                                     ).map(r -> r, system.dispatcher());
                                     return completeOKWithFuture(res, Jackson.marshaller());
                                 });
