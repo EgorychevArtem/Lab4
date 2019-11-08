@@ -71,10 +71,9 @@ public class App extends AllDirectives {
                                 post(()->
                                         entity(Jackson.unmarshaller(InputPackage.class), msg -> {
                                             router.tell(msg, ActorRef.noSender());
+                                            return complete("Test start\n");
                                         }))
-                        )
-                        )
-
+                        ))
         );
     }
 }
