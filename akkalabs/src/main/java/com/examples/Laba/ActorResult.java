@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class ActorResult extends AbstractActor {
     Map<String, ArrayList<Test>> storage = new HashMap<String, ArrayList<Test>>();
-    public AbstractActor.Receive createReceive(){
+    public Receive createReceive(){
         return receiveBuilder()
                 .match(InputResMessage.class, m -> {
                     storage.get(m.pkg).add(m.test);
