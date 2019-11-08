@@ -18,8 +18,16 @@ public class ActorRouter extends AbstractActor {
     public Receive createReceive() {
         return receiveBuilder()
                 .match(InputPackage.class, m -> {
-                    
+                    for(InputTest test : m.tests){
+                        this.router.tell(
+                                new InputTestMessage(
+                                        m.packageId, test.testName, m.script,
+                                        m.Namefunction, test.result, test.args.toArray()),
+                                getSelf()
+                        );
+                    }
                 })
+                .match()
     }
 
 }
