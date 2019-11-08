@@ -15,10 +15,13 @@ import akka.http.javadsl.server.Route;
 import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
+import akka.util.Timeout;
+import scala.concurrent.duration.FiniteDuration;
 
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
 import static akka.http.javadsl.server.Directives.path;
@@ -53,15 +56,17 @@ public class App extends AllDirectives {
                     return route(
                             get(() -> {
                                 return parameter("packageId", pkg -> {
+                                    Timeout time = Timeout.durationToTimeout(FiniteDuration.apply(5, TimeUnit.SECONDS));
                                     Future<Result> res = Patterns.ask(
-                                            router, new OutputRes(pkg),
+                                            router, new OutputRes(pkg), time
                                     ).map(r -> r, system.dispatcher());
                                     return completeOKWithFuture(res, Jackson.marshaller());
                                 });
                             })
                     );
 
-                })
-        )
+                }),
+
+        );
     }
 }
