@@ -66,6 +66,14 @@ public class App extends AllDirectives {
                     );
 
                 }),
+                path("test", () ->
+                        route(
+                                post(()->
+                                        entity(Jackson.unmarshaller(InputPackage.class), msg -> {
+                                            router.tell(msg, ActorRef.noSender());
+                                        }))
+                        )
+                        )
 
         );
     }
