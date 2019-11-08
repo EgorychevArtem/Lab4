@@ -1,5 +1,8 @@
 package com.examples.Laba;
 
-public class ActorRouter {
+import akka.actor.ActorRef;
 
+public class ActorRouter {
+    ActorRef storage, router;
+    ActorRouter()
 }
