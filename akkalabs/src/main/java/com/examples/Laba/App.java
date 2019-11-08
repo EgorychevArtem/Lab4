@@ -36,9 +36,9 @@ public class App extends AllDirectives {
         //MainHttp instance = new MainHttp(system);
         App app = new App();
         ActorRef router = system.actorOf(Props.create(ActorRouter.class, 5));
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow =
+        Flow<HttpRequest, HttpResponse, NotUsed> routeFlow =
                 app.createRoute(system, router).flow(system, materializer);
-        final CompletionStage<ServerBinding> binding = http.bindAndHandle(
+        CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
                 ConnectHttp.toHost("localhost", 8080),
                 materializer
