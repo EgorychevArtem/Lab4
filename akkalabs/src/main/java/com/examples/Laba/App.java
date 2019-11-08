@@ -9,6 +9,7 @@ import akka.http.javadsl.Http;
 import akka.http.javadsl.ServerBinding;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
+import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
@@ -19,7 +20,7 @@ import java.util.concurrent.CompletionStage;
 import static akka.http.javadsl.server.Directives.path;
 import static akka.http.javadsl.server.Directives.route;
 
-public class App {
+public class App extends AllDirectives {
     public static void main(String[] args) throws IOException {
         ActorSystem system = ActorSystem.create("routers");
         final Http http = Http.get(system);
@@ -46,8 +47,10 @@ public class App {
         route(
                 path("result", () ->
                             route(
-                                    get( () ->{
-
+                                    get( () -> {
+                                        return parameter("packageId", pkg ->{
+                                            
+                                        })
                                             }
 
                                     )
