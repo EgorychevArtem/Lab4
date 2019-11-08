@@ -59,7 +59,7 @@ public class App extends AllDirectives {
                                     Timeout time = Timeout.durationToTimeout(FiniteDuration.apply(5, TimeUnit.SECONDS));
                                     Future<Result> res = Patterns.ask(
                                             router, new OutputRes(pkg), time
-                                    ).map(r -> r, system.dispatcher());
+                                    ).map(r -> (Result) r, system.dispatcher());
                                     return completeOKWithFuture(res, Jackson.marshaller());
                                 });
                             })
