@@ -20,7 +20,8 @@ import scala.concurrent.duration.FiniteDuration;
 
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
-import java.util.concurrent.Future;
+//import java.util.concurrent.Future;
+import scala.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
