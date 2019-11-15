@@ -15,7 +15,7 @@ public class ActorResult extends AbstractActor {
                     if(storage.containsKey(m.pkg)) {
                         storage.get(m.pkg).add(m.test);
                     } else {
-                      ArrayList<Test> tests = new ArrayList<Test>();
+                      ArrayList<Test> tests = new ArrayList<>();
                       tests.add(m.test);
                       storage.put(m.pkg,tests);
                     }
