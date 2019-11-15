@@ -21,7 +21,7 @@ public class ActorResult extends AbstractActor {
                     }
                 })
                 .match(String.class, m -> {
-                    ArrayList<Test> list = storage.getOrDefault(m, new ArrayList<Test>());
+                    ArrayList<Test> list = storage.getOrDefault(m, new ArrayList<>());
                     Test[] arr = new Test[list.size()];
                     arr = list.toArray(arr);
                     sender().tell(
