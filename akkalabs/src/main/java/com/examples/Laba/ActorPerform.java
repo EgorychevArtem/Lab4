@@ -26,15 +26,11 @@ public class ActorPerform extends AbstractActor{
     public AbstractActor.Receive createReceive() {
         return receiveBuilder()
                 .match(InputTestMessage.class, m-> {
-                    boolean resflag;
+                    boolean resflag = false;
                     String description;
                     try {
                         String out = checkTest(m.script, m.NameFunction, m.args);
-                        if (out == m.res) {
-                            resflag = true;
-                        } else {
-                            resflag = false;
-                        }
+                        resflag = out.equals(m.res);
                         description = resflag ? "ok" : "Expected: " + m.res + "Out: " + out;
                     }
                     this.storage.tell(new InputResMessage(m.pkg, new Test(m.name, resflag, description)),getSelf());
