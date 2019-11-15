@@ -8,10 +8,15 @@ import java.util.Map;
 
 public class ActorResult extends AbstractActor {
     Map<String, ArrayList<Test>> storage = new HashMap<String, ArrayList<Test>>();
+
     public Receive createReceive(){
         return receiveBuilder()
                 .match(InputResMessage.class, m -> {
-                    storage.get(m.pkg).add(m.test);
+                    if(storage.containsKey(m.pkg)) {
+                        storage.get(m.pkg).add(m.test);
+                    }else{
+                        
+                    }
                 })
                 .match(String.class, m -> {
                     ArrayList<Test> list = storage.getOrDefault(m, new ArrayList<Test>());
