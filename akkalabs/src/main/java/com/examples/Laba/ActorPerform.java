@@ -15,7 +15,7 @@ public class ActorPerform extends AbstractActor{
         this.storage = storage;
     }
 
-    String checkTest(String script, String NameFunction, Object... args) throws ScriptException, NoSuchMethodException {
+    private String checkTest(String script, String NameFunction, Object... args) throws ScriptException, NoSuchMethodException {
         ScriptEngine engine = new
                 ScriptEngineManager().getEngineByName("nashorn");
         engine.eval(script);
