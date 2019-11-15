@@ -29,6 +29,8 @@ import static akka.http.javadsl.server.Directives.path;
 import static akka.http.javadsl.server.Directives.route;
 
 public class App extends AllDirectives {
+    private static String RESULT = "result";
+
     public static void main(String[] args) throws IOException {
         ActorSystem system = ActorSystem.create("routers");
         final Http http = Http.get(system);
@@ -53,7 +55,7 @@ public class App extends AllDirectives {
 
     Route createRoute(ActorSystem system, ActorRef router) {
         return route(
-                path("result", () -> {
+                path(RESULT, () -> {
                     return route(
                             get(() -> {
                                 return parameter("packageId", pkg -> {
