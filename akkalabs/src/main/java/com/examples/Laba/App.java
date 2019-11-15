@@ -34,7 +34,6 @@ public class App extends AllDirectives {
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
 
-        //MainHttp instance = new MainHttp(system);
         App app = new App();
         ActorRef router = system.actorOf(Props.create(ActorRouter.class, 5));
 
@@ -42,7 +41,7 @@ public class App extends AllDirectives {
                 app.createRoute(system, router).flow(system, materializer);
         CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
-                ConnectHttp.toHost("localhost", 17077),
+                ConnectHttp.toHost("localhost", 8080),
                 materializer
         );
         System.out.println("Server online at http://localhost:8080/\nPress RETURN to stop...");
