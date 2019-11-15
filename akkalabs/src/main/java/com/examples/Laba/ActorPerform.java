@@ -28,13 +28,15 @@ public class ActorPerform extends AbstractActor{
                 .match(InputTestMessage.class, m-> {
                     boolean resflag;
                     String description;
-                    String out = checkTest(m.script, m.NameFunction, m.args);
-                    if (out == m.res){
-                        resflag = true;
-                    } else{
-                        resflag = false;
+                    try {
+                        String out = checkTest(m.script, m.NameFunction, m.args);
+                        if (out == m.res) {
+                            resflag = true;
+                        } else {
+                            resflag = false;
+                        }
+                        description = resflag ? "ok" : "Expected: " + m.res + "Out: " + out;
                     }
-                    description = resflag ? "ok" : "Expected: " + m.res + "Out: " + out;
                     this.storage.tell(new InputResMessage(m.pkg, new Test(m.name, resflag, description)),getSelf());
                 }).build();
     }

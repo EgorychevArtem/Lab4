@@ -37,11 +37,12 @@ public class App extends AllDirectives {
         //MainHttp instance = new MainHttp(system);
         App app = new App();
         ActorRef router = system.actorOf(Props.create(ActorRouter.class, 5));
+
         Flow<HttpRequest, HttpResponse, NotUsed> routeFlow =
                 app.createRoute(system, router).flow(system, materializer);
         CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
-                ConnectHttp.toHost("localhost", 8080),
+                ConnectHttp.toHost("localhost", 17077),
                 materializer
         );
         System.out.println("Server online at http://localhost:8080/\nPress RETURN to stop...");
