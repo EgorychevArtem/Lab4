@@ -32,6 +32,10 @@ public class ActorPerform extends AbstractActor{
                         String out = checkTest(m.script, m.NameFunction, m.args);
                         resflag = out.equals(m.res);
                         description = resflag ? "ok" : "Expected: " + m.res + "Out: " + out;
+                    } catch (ScriptException e){
+                        description = "ScriptException\n" + e.getMessage();
+                    } catch (NoSuchMethodException e){
+                        description = "NoSuchMethodException\n" + e.getMessage();
                     }
                     this.storage.tell(new InputResMessage(m.pkg, new Test(m.name, resflag, description)),getSelf());
                 }).build();
