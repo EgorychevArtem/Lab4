@@ -14,8 +14,9 @@ public class ActorResult extends AbstractActor {
                 .match(InputResMessage.class, m -> {
                     if(storage.containsKey(m.pkg)) {
                         storage.get(m.pkg).add(m.test);
-                    }else{
-                        
+                    } else {
+                      ArrayList<Test> tests = new ArrayList<Test>();
+                      tests.add(m.test);
                     }
                 })
                 .match(String.class, m -> {
