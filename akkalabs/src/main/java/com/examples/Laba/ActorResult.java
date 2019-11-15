@@ -17,6 +17,7 @@ public class ActorResult extends AbstractActor {
                     } else {
                       ArrayList<Test> tests = new ArrayList<Test>();
                       tests.add(m.test);
+                      storage.put(m.pkg,tests);
                     }
                 })
                 .match(String.class, m -> {
