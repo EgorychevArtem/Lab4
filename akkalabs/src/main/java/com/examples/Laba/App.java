@@ -30,9 +30,9 @@ import static akka.http.javadsl.server.Directives.route;
 
 public class App extends AllDirectives {
     private static String RESULT = "result";
-
+    private static String PACKAGEID= "PackageId";
     public static void main(String[] args) throws IOException {
-        ActorSystem system = ActorSystem.create("routers");
+        ActorSystem system = ActorSystem.create("lab4");
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
 
@@ -58,7 +58,7 @@ public class App extends AllDirectives {
                 path(RESULT, () -> {
                     return route(
                             get(() -> {
-                                return parameter("packageId", pkg -> {
+                                return parameter(PACKAGEID, pkg -> {
                                     Timeout time = Timeout.durationToTimeout(FiniteDuration.apply(5, TimeUnit.SECONDS));
                                     Future<Result> res = Patterns.ask(
                                             router, new OutputRes(pkg), time
