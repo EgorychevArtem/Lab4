@@ -30,7 +30,8 @@ import static akka.http.javadsl.server.Directives.route;
 
 public class App extends AllDirectives {
     private static String RESULT = "result";
-    private static String PACKAGEID= "PackageId";
+    private static String PACKAGEID = "PackageId";
+    private static String TEST = "test";
 
     public static void main(String[] args) throws IOException {
         ActorSystem system = ActorSystem.create("lab4");
@@ -55,7 +56,7 @@ public class App extends AllDirectives {
     }
 
     Route createRoute(ActorSystem system, ActorRef router) {
-        return route(
+        /*return route(
                 path(RESULT, () -> {
                     return route(
                             get(() -> {
@@ -70,7 +71,7 @@ public class App extends AllDirectives {
                     );
 
                 }),
-                path("test", () ->
+                path(TEST, () ->
                         route(
                                 post(()->
                                         entity(Jackson.unmarshaller(InputPackage.class), msg -> {
@@ -78,6 +79,25 @@ public class App extends AllDirectives {
                                             return complete("Test start\n");
                                         }))
                         ))
+                        
+        );*/
+        return route (
+                post(() ->
+                        entity(Jackson.unmarshaller(InputPackage.class), msg -> {
+                            router.tell(msg, ActorRef.noSender());
+                            return complete("Test start");
+                        })
+                        ),
+                get(() ->
+                        parameter(PACKAGEID, pkg -> {
+                            Future<Object> result = Patterns.ask(
+                                    router,
+                                    new OutputRes(pkg),
+                                    5000
+                            );
+                            return completeOKWithFuture(result,Jackson.marshaller());
+                        })
+                        )
         );
     }
 }
