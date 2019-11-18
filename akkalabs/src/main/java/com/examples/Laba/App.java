@@ -41,8 +41,7 @@ public class App extends AllDirectives {
         App app = new App();
         ActorRef router = system.actorOf(Props.create(ActorRouter.class, 5));
 
-        Flow<HttpRequest, HttpResponse, NotUsed> routeFlow =
-                app.createRoute(system, router).flow(system, materializer);
+        Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute(system, router).flow(system, materializer);
         CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
                 ConnectHttp.toHost("localhost", 8080),
@@ -85,19 +84,19 @@ public class App extends AllDirectives {
                 post(() ->
                         entity(Jackson.unmarshaller(InputPackage.class), msg -> {
                             router.tell(msg, ActorRef.noSender());
-                            return complete("Test start");
+                            return complete("Test start\n");
                         })
-                        ),
+                ),
                 get(() ->
                         parameter(PACKAGEID, pkg -> {
+                            Timeout time = Timeout.durationToTimeout(FiniteDuration.apply(5, TimeUnit.SECONDS));
                             Future<Object> result = Patterns.ask(
                                     router,
-                                    new OutputRes(pkg),
-                                    5000
+                                    new OutputRes(pkg), time
                             );
                             return completeOKWithFuture(result,Jackson.marshaller());
                         })
-                        )
+                )
         );
     }
 }
