@@ -22,7 +22,7 @@ public class ActorRouter extends AbstractActor {
                         this.router.tell(
                                 new InputTestMessage(
                                         m.packageId, test.testName, m.script,
-                                        m.Namefunction, test.result, test.args.toArray()),
+                                        m.Namefunction, test.result, test.args),
                                 getSelf()
                         );
                     }
