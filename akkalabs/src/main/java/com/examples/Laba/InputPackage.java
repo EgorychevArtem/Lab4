@@ -6,11 +6,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 public class InputPackage {
-    String packageId, script, Namefunction;
+    long packageId;
+    String script, Namefunction;
     InputTest[] tests;
 
     @JsonCreator
-    InputPackage(@JsonProperty("packageId") String packageId, @JsonProperty("jsScript") String script,
+    InputPackage(@JsonProperty("packageId") long packageId, @JsonProperty("jsScript") String script,
                  @JsonProperty("functionName") String Namefunction, @JsonProperty("tests") InputTest[] tests){
         this.packageId = packageId;
         this.script = script;

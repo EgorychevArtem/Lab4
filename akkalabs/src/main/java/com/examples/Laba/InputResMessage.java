@@ -1,9 +1,9 @@
 package com.examples.Laba;
 
 public class InputResMessage {
-    public String pkg;
+    public long pkg;
     public Test test;
-    InputResMessage(String pkg, Test test){
+    InputResMessage(long pkg, Test test){
         this.pkg = pkg;
         this.test = test;
     }

@@ -39,7 +39,7 @@ public class App extends AllDirectives {
         final ActorMaterializer materializer = ActorMaterializer.create(system);
 
         App app = new App();
-        ActorRef router = system.actorOf(Props.create(ActorRouter.class, 5));
+        ActorRef router = system.actorOf(Props.create(ActorRouter.class, 10));
 
         Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute(system, router).flow(system, materializer);
         CompletionStage<ServerBinding> binding = http.bindAndHandle(
@@ -92,7 +92,8 @@ public class App extends AllDirectives {
                             Timeout time = Timeout.durationToTimeout(FiniteDuration.apply(5, TimeUnit.SECONDS));
                             Future<Object> result = Patterns.ask(
                                     router,
-                                    new OutputRes(pkg), time
+                                    new OutputRes(Long.parseLong(pkg)),
+                                    time
                             );
                             return completeOKWithFuture(result,Jackson.marshaller());
                         })

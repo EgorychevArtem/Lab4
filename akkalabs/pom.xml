@@ -6,6 +6,25 @@
     <artifactId>akka-labs</artifactId>
     <packaging>jar</packaging>
     <version>0.1.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>com.examples.Laba.App</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <properties>
         <akka.version>2.5.26</akka.version>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -80,4 +99,3 @@
 
     </dependencies>
 </project>
-
