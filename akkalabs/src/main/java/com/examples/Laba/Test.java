@@ -1,9 +1,9 @@
 package com.examples.Laba;
 
 public class Test {
-    String test;
+    InputTest test;
     Boolean result;
-    public Test(String test, boolean result) {
+    public Test(InputTest test, boolean result) {
         this.test = test;
         this.result = result;
     }
