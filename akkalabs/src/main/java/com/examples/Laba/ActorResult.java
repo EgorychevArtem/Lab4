@@ -15,14 +15,14 @@ public class ActorResult extends AbstractActor {
         return receiveBuilder()
                 .match(InputResMessage.class, m-> {
                     this.storage.computeIfAbsent(m.pkg, k-> new ArrayList<>())
-                            .add(m.test);
+                            .add((Test) m.test);
                 })
                 .match(OutputRes.class, m->{
                     getSender().tell(
                          new InputResMessage(m.pkg, this.storage.get(m.pkg)),
                             ActorRef.noSender()
                     );
-                })
+                }).build();
               /*  .match(InputResMessage.class, m -> {
                     if(storage.containsKey(m.pkg)) {
                         storage.get(m.pkg).add(m.test);
