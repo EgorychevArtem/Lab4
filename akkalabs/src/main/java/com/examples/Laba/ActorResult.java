@@ -22,7 +22,8 @@ public class ActorResult extends AbstractActor {
                          new InputResMessage(m.pkg, this.storage.get(m.pkg)),
                             ActorRef.noSender()
                     );
-                }).build();
+                })
+                .build();
               /*  .match(InputResMessage.class, m -> {
                     if(storage.containsKey(m.pkg)) {
                         storage.get(m.pkg).add(m.test);
