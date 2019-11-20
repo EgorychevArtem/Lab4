@@ -11,6 +11,6 @@ public class InputResMessage {
     }
 
     public InputResMessage(long pkg, InputTest test, String result){
-        
+        this(pkg, new Test(test, result));
     }
 }
