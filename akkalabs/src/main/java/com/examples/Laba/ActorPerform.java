@@ -46,4 +46,8 @@ public class ActorPerform extends AbstractActor{
                     );
                 }).build();
     }
+
+    public static void runTest(InputTestMessage m){
+
+    }
 }
