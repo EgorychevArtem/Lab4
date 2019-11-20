@@ -10,4 +10,5 @@ public class PackageTestResult {
         this.pkg = pkg;
         this.results = results;
     }
+
 }

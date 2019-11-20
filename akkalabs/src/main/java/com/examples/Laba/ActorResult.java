@@ -19,7 +19,7 @@ public class ActorResult extends AbstractActor {
                 })
                 .match(OutputRes.class, m->{
                     getSender().tell(
-                         new InputResMessage(m.pkg, this.storage.get(m.pkg)),
+                         new PackageTestResult(m.pkg, this.storage.get(m.pkg)),
                             ActorRef.noSender()
                     );
                 })
