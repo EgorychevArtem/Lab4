@@ -1,6 +1,7 @@
 package com.examples.Laba;
 
 import akka.actor.AbstractActor;
+import akka.actor.ActorRef;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +18,10 @@ public class ActorResult extends AbstractActor {
                             .add(m.test);
                 })
                 .match(OutputRes.class, m->{
-
+                    getSender().tell(
+                         new InputResMessage(m.pkg, this.storage.get(m.pkg)),
+                            ActorRef.noSender()
+                    );
                 })
               /*  .match(InputResMessage.class, m -> {
                     if(storage.containsKey(m.pkg)) {
