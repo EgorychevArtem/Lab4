@@ -55,6 +55,8 @@ public class ActorPerform extends AbstractActor{
             return invocable.invokeFunction(m.NameFunction, m.test.args).toString();
         } catch (ScriptException e) {
             return "ScriptException\n" + e.getMessage();
+        } catch (NoSuchMethodException e){
+            return "NoSuchMethodException\n" + e.getMessage();
         }
     }
 }
