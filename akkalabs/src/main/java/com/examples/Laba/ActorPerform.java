@@ -48,6 +48,11 @@ public class ActorPerform extends AbstractActor{
     }
 
     public static String  runTest(InputTestMessage m){
-
+        try{
+            ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
+            engine.eval(m.script);
+            Invocable invocable = (Invocable) engine;
+            return invocable.invokeFunction(m.NameFunction, m.test.args).toString();
+        } catch (ScriptException e)
     }
 }
