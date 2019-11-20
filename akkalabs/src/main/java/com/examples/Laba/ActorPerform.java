@@ -39,6 +39,8 @@ public class ActorPerform extends AbstractActor{
                     }
                     this.storage.tell(new InputResMessage(m.pkg, new Test(m.name, resflag)),getSelf());
                 }).build();*/
-                .match()
+                .match(InputTestMessage.class, m->{
+
+                }).build();
     }
 }
