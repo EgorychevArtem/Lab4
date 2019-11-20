@@ -21,8 +21,8 @@ public class ActorRouter extends AbstractActor {
                     for(InputTest test : m.tests){
                         this.router.tell(
                                 new InputTestMessage(
-                                        m.packageId, test.testName, m.script,
-                                        m.Namefunction, test.result, test.args),
+                                        m.packageId, m.script,
+                                        m.Namefunction, test),
                                 getSelf()
                         );
                     }
