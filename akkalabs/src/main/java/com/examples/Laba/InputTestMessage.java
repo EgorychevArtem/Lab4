@@ -2,15 +2,13 @@ package com.examples.Laba;
 
 public class InputTestMessage {
     long pkg;
-    String name, script, NameFunction, res;
-    Object[] args;
+    String script, NameFunction;
+    InputTest test;
 
-    InputTestMessage(long pkg, String name, String script, String NameFunction, String res, Object[] args){
+    InputTestMessage(long pkg, String script, String NameFunction, InputTest test){
         this.pkg = pkg;
-        this.name = name;
         this.script = script;
         this.NameFunction = NameFunction;
-        this.res = res;
-        this.args = args;
+        this.test = test;
     }
 }
