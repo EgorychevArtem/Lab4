@@ -25,7 +25,7 @@ public class ActorPerform extends AbstractActor{
 
     public AbstractActor.Receive createReceive() {
         return receiveBuilder()
-                .match(InputTestMessage.class, m-> {
+                /*.match(InputTestMessage.class, m-> {
                     boolean resflag = false;
                     String description;
                     try {
@@ -38,6 +38,7 @@ public class ActorPerform extends AbstractActor{
                         description = "NoSuchMethodException\n" + e.getMessage();
                     }
                     this.storage.tell(new InputResMessage(m.pkg, new Test(m.name, resflag)),getSelf());
-                }).build();
+                }).build();*/
+                .match()
     }
 }
