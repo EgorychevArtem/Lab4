@@ -9,9 +9,15 @@ import java.util.Map;
 public class ActorResult extends AbstractActor {
     Map<Long, ArrayList<Test>> storage = new HashMap<>();
 
+    @Override
     public Receive createReceive(){
         return receiveBuilder()
-                .match(InputResMessage.class, m -> {
+                .match(InputResMessage.class, m-> {
+                    this.storage.computeIfAbsent(m.pkg, k-> new ArrayList<>())
+                            .add(m.test);
+                })
+                .match()
+              /*  .match(InputResMessage.class, m -> {
                     if(storage.containsKey(m.pkg)) {
                         storage.get(m.pkg).add(m.test);
                     } else {
@@ -27,7 +33,7 @@ public class ActorResult extends AbstractActor {
                     sender().tell(
                             new Result(arr),
                             getSelf()
-                    );
+                    );*/
                 }).build();
     }
 }

@@ -37,7 +37,7 @@ public class ActorPerform extends AbstractActor{
                     } catch (NoSuchMethodException e){
                         description = "NoSuchMethodException\n" + e.getMessage();
                     }
-                    this.storage.tell(new InputResMessage(m.pkg, new Test(m.name, resflag, description)),getSelf());
+                    this.storage.tell(new InputResMessage(m.pkg, new Test(m.name, resflag)),getSelf());
                 }).build();
     }
 }

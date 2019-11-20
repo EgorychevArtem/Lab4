@@ -39,9 +39,8 @@ public class App extends AllDirectives {
         final ActorMaterializer materializer = ActorMaterializer.create(system);
 
         App app = new App();
-        ActorRef router = system.actorOf(Props.create(ActorRouter.class, 10));
 
-        Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute(system, router).flow(system, materializer);
+        Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute(system).flow(system, materializer);
         CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
                 ConnectHttp.toHost("localhost", 8080),
@@ -54,7 +53,8 @@ public class App extends AllDirectives {
                 .thenAccept(unbound -> system.terminate());
     }
 
-    Route createRoute(ActorSystem system, ActorRef router) {
+    Route createRoute(ActorSystem system) {
+        ActorRef router = system.actorOf(Props.create(ActorRouter.class, 10));
         /*return route(
                 path(RESULT, () -> {
                     return route(
