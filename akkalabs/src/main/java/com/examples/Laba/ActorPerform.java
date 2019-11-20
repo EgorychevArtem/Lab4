@@ -53,6 +53,8 @@ public class ActorPerform extends AbstractActor{
             engine.eval(m.script);
             Invocable invocable = (Invocable) engine;
             return invocable.invokeFunction(m.NameFunction, m.test.args).toString();
-        } catch (ScriptException e)
+        } catch (ScriptException e) {
+            return "ScriptException\n" + e.getMessage();
+        }
     }
 }
