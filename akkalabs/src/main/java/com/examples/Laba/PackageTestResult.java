@@ -6,5 +6,8 @@ public class PackageTestResult {
     long pkg;
     List<Test> results;
 
-    
+    public PackageTestResult(long pkg, List<Test> results){
+        this.pkg = pkg;
+        this.results = results;
+    }
 }
