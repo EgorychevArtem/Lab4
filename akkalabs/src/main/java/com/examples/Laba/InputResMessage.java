@@ -10,4 +10,7 @@ public class InputResMessage {
         this.result = result;
     }
 
+    public InputResMessage(long pkg, InputTest test, String result){
+        
+    }
 }
