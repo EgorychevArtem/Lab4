@@ -16,7 +16,9 @@ public class ActorResult extends AbstractActor {
                     this.storage.computeIfAbsent(m.pkg, k-> new ArrayList<>())
                             .add(m.test);
                 })
-                .match()
+                .match(OutputRes.class, m->{
+
+                })
               /*  .match(InputResMessage.class, m -> {
                     if(storage.containsKey(m.pkg)) {
                         storage.get(m.pkg).add(m.test);
@@ -33,7 +35,7 @@ public class ActorResult extends AbstractActor {
                     sender().tell(
                             new Result(arr),
                             getSelf()
-                    );*/
-                }).build();
+                    );
+                }).build();*/
     }
 }
