@@ -5,7 +5,7 @@ import java.util.List;
 public class InputResMessage {
     public long pkg;
     public List<Test> test;
-    InputResMessage(long pkg, Test test){
+    InputResMessage(long pkg, List<Test> test){
         this.pkg = pkg;
         this.test = test;
     }
