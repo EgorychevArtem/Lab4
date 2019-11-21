@@ -20,7 +20,9 @@ public class ActorRouter extends AbstractActor {
     @Override
     public Receive createReceive() {
         return receiveBuilder()
-                .match();
+                .match(OutputRes.class, m->{
+                    this.storage.tell(m,getSender());
+                });
     }
     /*ActorRouter(int n){
         this.storage = getContext().actorOf(Props.create(ActorResult.class));
