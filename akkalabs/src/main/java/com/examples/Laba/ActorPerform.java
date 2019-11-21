@@ -13,7 +13,7 @@ public class ActorPerform extends AbstractActor{
     ActorRef storage;
 
     public static Props props(){
-        
+        return Props.create(ActorPerform.class);
     }
     ActorPerform(ActorRef storage) {
         this.storage = storage;
