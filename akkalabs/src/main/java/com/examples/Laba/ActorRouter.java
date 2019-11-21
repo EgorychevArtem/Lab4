@@ -12,16 +12,16 @@ public class ActorRouter extends AbstractActor {
         return Props.create(ActorRouter.class, ActorRouter::new);
     }
 
-    @Override
-    public Receive createReceive() {
-        return null;
-    }
-
     ActorRouter(){
         this.storage = getContext().actorOf(ActorResult.props());
         this.router = getContext().actorOf(new RoundRobinPool(10).props(ActorRouter.props()));
     }
 
+    @Override
+    public Receive createReceive() {
+        return receiveBuilder()
+                .match();
+    }
     /*ActorRouter(int n){
         this.storage = getContext().actorOf(Props.create(ActorResult.class));
         this.router = getContext().actorOf(Props.create(ActorPerform.class, this.storage)
