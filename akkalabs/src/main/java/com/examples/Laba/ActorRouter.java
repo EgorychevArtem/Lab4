@@ -5,6 +5,8 @@ import akka.actor.ActorRef;
 import akka.actor.Props;
 import akka.routing.RoundRobinPool;
 
+import java.util.stream.Stream;
+
 public class ActorRouter extends AbstractActor {
     ActorRef storage, router;
 
@@ -22,6 +24,9 @@ public class ActorRouter extends AbstractActor {
         return receiveBuilder()
                 .match(OutputRes.class, m->{
                     this.storage.tell(m,getSender());
+                })
+                .match(InputPackage.class, m->{
+                    Stream.of(m.tests).map(t -> new )
                 })
                 .build();
     }
