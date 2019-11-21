@@ -26,7 +26,8 @@ public class ActorRouter extends AbstractActor {
                     this.storage.tell(m,getSender());
                 })
                 .match(InputPackage.class, m->{
-                    Stream.of(m.tests).map(t -> new )
+                    Stream.of(m.tests).map(t -> new InputTestMessage(m.packageId, m.script, m.Namefunction, t))
+                    .forEach(msg -> this.router.tell(msg, this.storage););
                 })
                 .build();
     }
