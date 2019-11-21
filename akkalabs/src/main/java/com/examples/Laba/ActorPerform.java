@@ -15,9 +15,9 @@ public class ActorPerform extends AbstractActor{
     public static Props props(){
         return Props.create(ActorPerform.class);
     }
-    ActorPerform(ActorRef storage) {
+   /* ActorPerform(ActorRef storage) {
         this.storage = storage;
-    }
+    }*/
 
     private String checkTest(String script, String NameFunction, Object... args) throws ScriptException, NoSuchMethodException {
         ScriptEngine engine = new
