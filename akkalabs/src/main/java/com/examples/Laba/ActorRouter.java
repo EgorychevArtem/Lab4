@@ -7,7 +7,11 @@ import akka.routing.RoundRobinPool;
 
 public class ActorRouter extends AbstractActor {
     ActorRef storage, router;
-    
+
+    public static Props props(){
+        
+    }
+
     ActorRouter(){
         this.storage = getContext().actorOf(ActorResult.)
     }
