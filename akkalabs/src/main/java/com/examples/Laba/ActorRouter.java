@@ -7,8 +7,12 @@ import akka.routing.RoundRobinPool;
 
 public class ActorRouter extends AbstractActor {
     ActorRef storage, router;
+    
+    ActorRouter(){
+        this.storage = getContext().actorOf(ActorResult.)
+    }
 
-    ActorRouter(int n){
+    /*ActorRouter(int n){
         this.storage = getContext().actorOf(Props.create(ActorResult.class));
         this.router = getContext().actorOf(Props.create(ActorPerform.class, this.storage)
         .withRouter(new RoundRobinPool(n)));
@@ -29,6 +33,6 @@ public class ActorRouter extends AbstractActor {
                 })
                 .match(OutputRes.class, m-> this.storage.tell(m.pkg, sender()))
                 .build();
-    }
+    }*/
 
 }
