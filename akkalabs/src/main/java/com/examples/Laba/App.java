@@ -54,7 +54,7 @@ public class App extends AllDirectives {
     }
 
     Route createRoute(ActorSystem system) {
-        ActorRef router = system.actorOf(ActorRouter.props());
+        ActorRef router = system.actorOf(Props.create(ActorRouter.class, 5));
         /*return route(
                 path(RESULT, () -> {
                     return route(

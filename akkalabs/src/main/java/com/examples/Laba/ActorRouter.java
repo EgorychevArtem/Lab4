@@ -16,7 +16,7 @@ public class ActorRouter extends AbstractActor {
 
     ActorRouter(){
         this.storage = getContext().actorOf(ActorResult.props());
-        this.router = getContext().actorOf(new RoundRobinPool(10).props(ActorRouter.props()));
+        this.router = getContext().actorOf(new RoundRobinPool(10).props(ActorPerform.props());
     }
 
     @Override
