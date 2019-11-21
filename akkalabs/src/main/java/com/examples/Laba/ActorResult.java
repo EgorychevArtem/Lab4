@@ -2,6 +2,7 @@ package com.examples.Laba;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
+import akka.actor.Props;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,6 +10,10 @@ import java.util.Map;
 
 public class ActorResult extends AbstractActor {
     Map<Long, ArrayList<Test>> storage = new HashMap<>();
+
+    public static Props props() {
+        return Props.create(ActorResult.class, ActorResult::new);
+    }
 
     @Override
     public Receive createReceive(){

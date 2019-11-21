@@ -9,11 +9,11 @@ public class ActorRouter extends AbstractActor {
     ActorRef storage, router;
 
     public static Props props(){
-        
+        return Props.create(ActorRouter.class, ActorRouter::new);
     }
 
     ActorRouter(){
-        this.storage = getContext().actorOf(ActorResult.)
+        this.storage = getContext().actorOf(ActorResult.props())
     }
 
     /*ActorRouter(int n){
