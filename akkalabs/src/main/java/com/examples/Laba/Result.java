@@ -5,7 +5,7 @@ import java.util.List;
 public class Result {
     long pkg;
     List<Test> result;
-    public Result(Test[] arr) {
-        this.arr = arr;
+    public Result(long pkg, List<Test> result) {
+        this.pkg = pkg;
     }
 }
