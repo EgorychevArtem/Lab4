@@ -2,6 +2,7 @@ package com.examples.Laba;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
+import akka.actor.Props;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
@@ -11,6 +12,9 @@ import javax.script.ScriptException;
 public class ActorPerform extends AbstractActor{
     ActorRef storage;
 
+    public static Props props(){
+        
+    }
     ActorPerform(ActorRef storage) {
         this.storage = storage;
     }
