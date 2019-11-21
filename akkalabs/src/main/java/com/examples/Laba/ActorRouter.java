@@ -22,8 +22,10 @@ public class ActorRouter extends AbstractActor {
         return receiveBuilder()
                 .match(OutputRes.class, m->{
                     this.storage.tell(m,getSender());
-                });
+                })
+                .build();
     }
+
     /*ActorRouter(int n){
         this.storage = getContext().actorOf(Props.create(ActorResult.class));
         this.router = getContext().actorOf(Props.create(ActorPerform.class, this.storage)
