@@ -1,7 +1,10 @@
 package com.examples.Laba;
 
+import java.util.List;
+
 public class Result {
-    Test[] arr;
+    long pkg;
+    List<Test> result;
     public Result(Test[] arr) {
         this.arr = arr;
     }
