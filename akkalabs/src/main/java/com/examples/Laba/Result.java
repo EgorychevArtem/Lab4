@@ -7,5 +7,6 @@ public class Result {
     List<Test> result;
     public Result(long pkg, List<Test> result) {
         this.pkg = pkg;
+        this.result = result;
     }
 }
