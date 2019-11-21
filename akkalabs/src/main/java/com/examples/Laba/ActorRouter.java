@@ -13,7 +13,8 @@ public class ActorRouter extends AbstractActor {
     }
 
     ActorRouter(){
-        this.storage = getContext().actorOf(ActorResult.props())
+        this.storage = getContext().actorOf(ActorResult.props());
+        this.router = getContext().actorOf()
     }
 
     /*ActorRouter(int n){
