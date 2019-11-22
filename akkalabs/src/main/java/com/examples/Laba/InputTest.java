@@ -41,4 +41,8 @@ public class InputTest {
     public String getTestName(){
         return testName;
     }
+
+    public String getExpectedResult(){
+        return expectedResult;
+    }
 }
