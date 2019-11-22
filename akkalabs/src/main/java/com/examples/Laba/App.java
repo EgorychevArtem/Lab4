@@ -39,6 +39,7 @@ public class App extends AllDirectives {
         final ActorMaterializer materializer = ActorMaterializer.create(system);
 
         App app = new App();
+        ActorRef router = system.actorOf(Props.create(ActorRouter.class));
 
         Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute(system).flow(system, materializer);
         CompletionStage<ServerBinding> binding = http.bindAndHandle(
@@ -53,33 +54,7 @@ public class App extends AllDirectives {
                 .thenAccept(unbound -> system.terminate());
     }
 
-    Route createRoute(ActorSystem system) {
-        ActorRef router = system.actorOf(Props.create(ActorRouter.class));
-        /*return route(
-                path(RESULT, () -> {
-                    return route(
-                            get(() -> {
-                                return parameter(PACKAGEID, pkg -> {
-                                    Timeout time = Timeout.durationToTimeout(FiniteDuration.apply(5, TimeUnit.SECONDS));
-                                    Future<Result> res = Patterns.ask(
-                                            router, new OutputRes(pkg), time
-                                    ).map(r -> (Result) r, system.dispatcher());
-                                    return completeOKWithFuture(res, Jackson.marshaller());
-                                });
-                            })
-                    );
-
-                }),
-                path(TEST, () ->
-                        route(
-                                post(()->
-                                        entity(Jackson.unmarshaller(InputPackage.class), msg -> {
-                                            router.tell(msg, ActorRef.noSender());
-                                            return complete("Test start\n");
-                                        }))
-                        ))
-
-        );*/
+    Route createRoute(ActorSystem system, ActorRef router) {
         return route (
                 post(() ->
                         entity(Jackson.unmarshaller(InputPackage.class), msg -> {
