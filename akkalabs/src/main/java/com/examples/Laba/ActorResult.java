@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class ActorResult extends AbstractActor {
     Map<Long, ArrayList<Test>> storage = new HashMap<>();
-    
+
     @Override
     public Receive createReceive(){
         return receiveBuilder()
