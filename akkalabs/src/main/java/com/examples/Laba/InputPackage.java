@@ -11,7 +11,7 @@ public class InputPackage {
     InputTest[] tests;
 
     @JsonCreator
-    InputPackage(@JsonProperty("packageId") long packageId, @JsonProperty("jsScript") String script,
+    InputPackage(@JsonProperty("PackageId") long packageId, @JsonProperty("jsScript") String script,
                  @JsonProperty("functionName") String Namefunction, @JsonProperty("tests") InputTest[] tests){
         this.packageId = packageId;
         this.script = script;
