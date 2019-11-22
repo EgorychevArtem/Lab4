@@ -31,7 +31,9 @@ public class InputPackage {
         return functionName;
     }
 
-    
+    public InputTest[] getTests(){
+        return tests;
+    }
 
 
 }
