@@ -11,4 +11,8 @@ public class Test {
     public InputTest getTest(){
         return test;
     }
+
+    public String getResult(){
+        return result;
+    }
 }
