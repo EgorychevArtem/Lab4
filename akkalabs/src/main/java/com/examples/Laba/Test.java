@@ -7,4 +7,8 @@ public class Test {
         this.test = test;
         this.result = result;
     }
+
+    public InputTest getTest(){
+        return test;
+    }
 }
