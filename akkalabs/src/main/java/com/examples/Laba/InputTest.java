@@ -45,4 +45,8 @@ public class InputTest {
     public String getExpectedResult(){
         return expectedResult;
     }
+
+    public Object[] getParams(){
+        return params;
+    }
 }
