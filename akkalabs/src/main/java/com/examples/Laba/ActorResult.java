@@ -25,23 +25,5 @@ public class ActorResult extends AbstractActor {
                     );
                 })
                 .build();
-              /*  .match(InputResMessage.class, m -> {
-                    if(storage.containsKey(m.pkg)) {
-                        storage.get(m.pkg).add(m.test);
-                    } else {
-                      ArrayList<Test> tests = new ArrayList<>();
-                      tests.add(m.test);
-                      storage.put(m.pkg,tests);
-                    }
-                })
-                .match(String.class, m -> {
-                    ArrayList<Test> list = storage.getOrDefault(m, new ArrayList<>());
-                    Test[] arr = new Test[list.size()];
-                    arr = list.toArray(arr);
-                    sender().tell(
-                            new Result(arr),
-                            getSelf()
-                    );
-                }).build();*/
     }
 }
