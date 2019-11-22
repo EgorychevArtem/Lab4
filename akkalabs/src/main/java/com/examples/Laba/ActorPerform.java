@@ -12,9 +12,9 @@ import javax.script.ScriptException;
 public class ActorPerform extends AbstractActor{
     ActorRef storage;
 
-    ActorPerform(ActorRef storage) {
+    /*ActorPerform(ActorRef storage) {
         this.storage = storage;
-    }
+    }*/
 
     private String checkTest(InputTestMessage m) throws ScriptException, NoSuchMethodException {
         try{
