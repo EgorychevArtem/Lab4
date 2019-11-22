@@ -16,12 +16,17 @@ public class ActorPerform extends AbstractActor{
         this.storage = storage;
     }
 
-    private String checkTest(String script, String NameFunction, Object... args) throws ScriptException, NoSuchMethodException {
-        ScriptEngine engine = new
-                ScriptEngineManager().getEngineByName("nashorn");
-        engine.eval(script);
-        Invocable invocable = (Invocable) engine;
-        return invocable.invokeFunction(NameFunction, args).toString();
+    private String checkTest(InputTestMessage m) throws ScriptException, NoSuchMethodException {
+        try{
+            ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
+            engine.eval(m.jsScript);
+            Invocable invocable = (Invocable) engine;
+            return invocable.invokeFunction(m.functionName, m.test.params).toString();
+        } catch (ScriptException e) {
+            return "ScriptException\n" + e.getMessage();
+        } catch (NoSuchMethodException e){
+            return "NoSuchMethodException\n" + e.getMessage();
+        }
     }
 
     public Receive createReceive() {
@@ -42,22 +47,9 @@ public class ActorPerform extends AbstractActor{
                 }).build();*/
                 .match(InputTestMessage.class, m->{
                     getSender().tell(
-                            new InputResMessage(m.packageId, m.test, runTest(m)),
+                            new InputResMessage(m.packageId, m.test,checkTest(m)),
                             ActorRef.noSender()
                     );
                 }).build();
-    }
-
-    public static String  runTest(InputTestMessage m){
-        try{
-            ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
-            engine.eval(m.jsScript);
-            Invocable invocable = (Invocable) engine;
-            return invocable.invokeFunction(m.getFunctionName(), m.test.params).toString();
-        } catch (ScriptException e) {
-            return "ScriptException\n" + e.getMessage();
-        } catch (NoSuchMethodException e){
-            return "NoSuchMethodException\n" + e.getMessage();
-        }
     }
 }
