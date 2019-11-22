@@ -18,4 +18,5 @@ public class InputPackage {
         this.functionName = functionName;
         this.tests = tests;
     }
+
 }
