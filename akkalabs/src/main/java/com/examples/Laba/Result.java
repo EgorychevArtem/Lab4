@@ -9,6 +9,14 @@ public class Result {
         this.packageId = packageId;
         this.results = results;
     }
+
+    public long getPackageId(){
+        return packageId;
+    }
+
+    public List<Test> getResults(){
+        return results;
+    }
 }
 
 
