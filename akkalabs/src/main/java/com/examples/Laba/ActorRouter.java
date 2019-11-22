@@ -10,10 +10,6 @@ import java.util.stream.Stream;
 public class ActorRouter extends AbstractActor {
     ActorRef storage, router;
 
-    /*public static Props props(){
-        return Props.create(ActorRouter.class, ActorRouter::new);
-    }*/
-
     ActorRouter(int n){
         this.storage = getContext().actorOf(Props.create(ActorResult.class));
         this.router = getContext().actorOf(Props.create(ActorPerform.class, this.storage)
