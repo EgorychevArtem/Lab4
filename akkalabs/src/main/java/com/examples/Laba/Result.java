@@ -4,10 +4,10 @@ import java.util.List;
 
 public class Result {
     long packageId;
-    List<Test> result;
-    public Result(long packageId, List<Test> result) {
+    List<Test> results;
+    public Result(long packageId, List<Test> results) {
         this.packageId = packageId;
-        this.result = result;
+        this.results = results;
     }
 }
 
