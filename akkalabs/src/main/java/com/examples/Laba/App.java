@@ -32,7 +32,8 @@ public class App extends AllDirectives {
     private static String RESULT = "result";
     private static String PACKAGEID = "packageId";
     private static String TEST = "test";
-    private 
+    private static String HOST = "localhost";
+    private static int PORT = 8080;
 
     public static void main(String[] args) throws IOException {
         ActorSystem system = ActorSystem.create("routes");
@@ -45,7 +46,7 @@ public class App extends AllDirectives {
         Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute(system, router).flow(system, materializer);
         CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
-                ConnectHttp.toHost("localhost", 8080),
+                ConnectHttp.toHost(HOST, PORT),
                 materializer
         );
         System.out.println("Server online at http://localhost:8080/\nPress RETURN to stop...");
