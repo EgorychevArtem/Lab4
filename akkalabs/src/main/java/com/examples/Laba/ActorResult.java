@@ -15,7 +15,7 @@ public class ActorResult extends AbstractActor {
     public Receive createReceive(){
         return receiveBuilder()
                 .match(InputResMessage.class, m-> {
-                    this.storage.computeIfAbsent(m.pkg, k-> new ArrayList<>())
+                    this.storage.computeIfAbsent(m.packageId, k-> new ArrayList<>())
                             .add(m.result);
                 })
                 .match(OutputRes.class, m->{
