@@ -3,14 +3,22 @@ package com.examples.Laba;
 import java.util.List;
 
 public class InputResMessage {
-    public long pkg;
+    public long packageId;
     public Test result;
-    InputResMessage(long pkg, Test result){
-        this.pkg = pkg;
+    InputResMessage(long packageId, Test result){
+        this.packageId = packageId;
         this.result = result;
     }
 
-    public InputResMessage(long pkg, InputTest test, String result){
-        this(pkg, new Test(test, result));
+    public InputResMessage(long packageId, InputTest test, String result){
+        this(packageId, new Test(test, result));
+    }
+
+    public long getPackageId(){
+        return packageId;
+    }
+
+    public Test getResult(){
+        return result;
     }
 }
