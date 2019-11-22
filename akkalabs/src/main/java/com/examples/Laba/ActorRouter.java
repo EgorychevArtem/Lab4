@@ -10,13 +10,14 @@ import java.util.stream.Stream;
 public class ActorRouter extends AbstractActor {
     ActorRef storage, router;
 
-    public static Props props(){
+    /*public static Props props(){
         return Props.create(ActorRouter.class, ActorRouter::new);
-    }
+    }*/
 
-    ActorRouter(){
+    ActorRouter(int n){
         this.storage = getContext().actorOf(Props.create(ActorResult.class));
-        this.router = getContext().actorOf(new RoundRobinPool(10).props(Props.create(ActorPerform.class)));
+        this.router = getContext().actorOf(Props.create(ActorPerform.class, this.storage)
+        .withRouter(new RoundRobinPool(n)));
     }
 
     @Override

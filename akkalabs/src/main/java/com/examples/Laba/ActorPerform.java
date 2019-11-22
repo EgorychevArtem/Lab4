@@ -12,9 +12,9 @@ import javax.script.ScriptException;
 public class ActorPerform extends AbstractActor{
     ActorRef storage;
 
-    /*ActorPerform(ActorRef storage) {
+    ActorPerform(ActorRef storage) {
         this.storage = storage;
-    }*/
+    }
 
     private String checkTest(InputTestMessage m) throws ScriptException, NoSuchMethodException {
         try{
@@ -31,20 +31,6 @@ public class ActorPerform extends AbstractActor{
 
     public Receive createReceive() {
         return receiveBuilder()
-                /*.match(InputTestMessage.class, m-> {
-                    boolean resflag = false;
-                    String description;
-                    try {
-                        String out = checkTest(m.script, m.NameFunction, m.args);
-                        resflag = out.equals(m.res);
-                        description = resflag ? "ok" : "Expected: " + m.res + "Out: " + out;
-                    } catch (ScriptException e){
-                        description = "ScriptException\n" + e.getMessage();
-                    } catch (NoSuchMethodException e){
-                        description = "NoSuchMethodException\n" + e.getMessage();
-                    }
-                    this.storage.tell(new InputResMessage(m.pkg, new Test(m.name, resflag)),getSelf());
-                }).build();*/
                 .match(InputTestMessage.class, m->{
                     getSender().tell(
                             new InputResMessage(m.packageId, m.test,checkTest(m)),
