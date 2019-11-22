@@ -34,7 +34,7 @@ public class App extends AllDirectives {
     private static String TEST = "test";
 
     public static void main(String[] args) throws IOException {
-        ActorSystem system = ActorSystem.create("lab4");
+        ActorSystem system = ActorSystem.create("routes");
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
 

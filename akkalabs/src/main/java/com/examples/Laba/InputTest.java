@@ -6,14 +6,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 public class InputTest {
-    String testName, result;
-    Object[] args;
+    String testName, expectedResult;
+    Object[] params;
 
     @JsonCreator
-    InputTest(@JsonProperty("testName") String testName, @JsonProperty("expectedResult") String result,
-              @JsonProperty("params") Object[] args){
+    InputTest(@JsonProperty("testName") String testName, @JsonProperty("expectedResult") String expectedResult,
+              @JsonProperty("params") Object[] params){
         this.testName = testName;
-        this.result = result;
-        this.args = args;
+        this.expectedResult = expectedResult;
+        this.params = params;
     }
 }
