@@ -7,9 +7,10 @@ import akka.actor.Props;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class ActorResult extends AbstractActor {
-    Map<Long, ArrayList<Test>> storage = new HashMap<>();
+    Map<Long, ArrayList<Test>> storage = new TreeMap<>();
 
     public static Props props() {
         return Props.create(ActorResult.class, ActorResult::new);
