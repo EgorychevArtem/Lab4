@@ -27,7 +27,7 @@ public class ActorPerform extends AbstractActor{
         return invocable.invokeFunction(NameFunction, args).toString();
     }
 
-    public AbstractActor.Receive createReceive() {
+    public Receive createReceive() {
         return receiveBuilder()
                 /*.match(InputTestMessage.class, m-> {
                     boolean resflag = false;
@@ -45,7 +45,7 @@ public class ActorPerform extends AbstractActor{
                 }).build();*/
                 .match(InputTestMessage.class, m->{
                     getSender().tell(
-                            new InputResMessage(m.pkg, m.test, runTest(m)),
+                            new InputResMessage(m.packageId, m.test, runTest(m)),
                             ActorRef.noSender()
                     );
                 }).build();
@@ -54,9 +54,9 @@ public class ActorPerform extends AbstractActor{
     public static String  runTest(InputTestMessage m){
         try{
             ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
-            engine.eval(m.script);
+            engine.eval(m.jsScript);
             Invocable invocable = (Invocable) engine;
-            return invocable.invokeFunction(m.NameFunction, m.test.params).toString();
+            return invocable.invokeFunction(m.getFunctionName(), m.test.params).toString();
         } catch (ScriptException e) {
             return "ScriptException\n" + e.getMessage();
         } catch (NoSuchMethodException e){

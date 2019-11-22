@@ -30,7 +30,7 @@ import static akka.http.javadsl.server.Directives.route;
 
 public class App extends AllDirectives {
     private static String RESULT = "result";
-    private static String PACKAGEID = "PackageId";
+    private static String PACKAGEID = "packageId";
     private static String TEST = "test";
 
     public static void main(String[] args) throws IOException {
@@ -54,7 +54,7 @@ public class App extends AllDirectives {
     }
 
     Route createRoute(ActorSystem system) {
-        ActorRef router = system.actorOf(ActorRouter.props());
+        ActorRef router = system.actorOf(Props.create(ActorRouter));
         /*return route(
                 path(RESULT, () -> {
                     return route(

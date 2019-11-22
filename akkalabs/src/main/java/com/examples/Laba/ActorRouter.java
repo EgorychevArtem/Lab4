@@ -23,10 +23,10 @@ public class ActorRouter extends AbstractActor {
     public Receive createReceive() {
         return receiveBuilder()
                 .match(OutputRes.class, m->{
-                    this.storage.tell(m,getSender());
+                    this.storage.tell(m, getSender());
                 })
                 .match(InputPackage.class, m->{
-                    Stream.of(m.tests).map(t -> new InputTestMessage(m.packageId, m.jsScript, m.functionName, t))
+                    Stream.of(m.tests).map(t -> new InputTestMessage(m.getPackageId(), m.getJsScript(), m.getFunctionName(), t))
                     .forEach(msg -> this.router.tell(msg, this.storage));
                 })
                 .build();
