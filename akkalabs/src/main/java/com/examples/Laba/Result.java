@@ -1,19 +1,18 @@
 package com.examples.Laba;
 
-/*import java.util.List;
-
-public class Result {
-    long pkg;
-    List<Test> result;
-    public Result(long pkg, List<Test> result) {
-        this.pkg = pkg;
-        this.result = result;
-    }
-}*/
-
 import java.util.List;
 
 public class Result {
+    long packageId;
+    List<Test> result;
+    public Result(long packageId, List<Test> result) {
+        this.packageId = packageId;
+        this.result = result;
+    }
+}
+
+
+/*public class Result {
     long packageId;
     List<Test> results;
 
@@ -30,3 +29,4 @@ public class Result {
         return results;
     }
 }
+*/
