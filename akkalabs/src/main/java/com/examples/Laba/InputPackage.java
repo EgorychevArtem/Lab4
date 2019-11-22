@@ -11,11 +11,11 @@ public class InputPackage {
     InputTest[] tests;
 
     @JsonCreator
-    InputPackage(@JsonProperty("packageId") long packageId, @JsonProperty("jsScript") String script,
-                 @JsonProperty("functionName") String Namefunction, @JsonProperty("tests") InputTest[] tests){
+    InputPackage(@JsonProperty("packageId") long packageId, @JsonProperty("jsScript") String jsScript,
+                 @JsonProperty("functionName") String functionName, @JsonProperty("tests") InputTest[] tests){
         this.packageId = packageId;
-        this.jsScript = script;
-        this.functionName = Namefunction;
+        this.jsScript = jsScript;
+        this.functionName = functionName;
         this.tests = tests;
     }
 }
