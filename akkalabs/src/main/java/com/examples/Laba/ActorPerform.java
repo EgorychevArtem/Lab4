@@ -56,7 +56,7 @@ public class ActorPerform extends AbstractActor{
             ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
             engine.eval(m.script);
             Invocable invocable = (Invocable) engine;
-            return invocable.invokeFunction(m.NameFunction, m.test.args).toString();
+            return invocable.invokeFunction(m.NameFunction, m.test.params).toString();
         } catch (ScriptException e) {
             return "ScriptException\n" + e.getMessage();
         } catch (NoSuchMethodException e){
