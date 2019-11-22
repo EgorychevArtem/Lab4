@@ -19,4 +19,19 @@ public class InputPackage {
         this.tests = tests;
     }
 
+    public long getPackageId(){
+        return packageId;
+    }
+
+    public String getJsScript(){
+        return jsScript;
+    }
+
+    public String getFunctionName(){
+        return functionName;
+    }
+
+    
+
+
 }
